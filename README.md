@@ -1,6 +1,12 @@
 # jetflix
 This is a new streaming or content delivery solution fow the world.
 
+## Members
+* Jhon Garcia
+* Johann Gonzales
+* Rody Carlo
+* Alfredo Portocarrero
+
 ## Coding Rules
 
 ### Commit Message Format
