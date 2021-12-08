@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Home = () => {
     return (
-        <div>
+        <div className="container">
             <h1>home</h1>
         </div>
     )
