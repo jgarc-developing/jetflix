@@ -11,9 +11,9 @@ const navigation = [
   { name: "Recomendaciones", href: "/", current: false },
 ];
 
-const  classNames = (...classes) => {
+const classNames = (...classes) => {
   return classes.filter(Boolean).join(" ");
-}
+};
 
 export const Navbar = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -26,7 +26,7 @@ export const Navbar = () => {
     setSearchTerm("");
   };
   return (
-    <Disclosure as="nav" className="bg-zinc-900">
+    <Disclosure as="nav" className="bg-zinc-900 border-4 border-b-stone-500">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
