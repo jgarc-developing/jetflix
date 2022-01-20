@@ -60,6 +60,21 @@ code {
   width: 100%;
 }
 
+.card-container {
+  border-radius: 20px;
+  align-self: center;
+  margin: 10px 85px;
+}
+
+.card-section {
+  border-radius: 20px;
+}
+
+.card-container > h2 {
+  position: relative;
+  top: 60px; left: 30px;
+}
+
 .title {
   /* font-family: "ABeeZee"; */
   /* font-style: italic; */
@@ -84,6 +99,22 @@ code {
   text-align: center;
   transition: all 0.2s;
   background-color: #d63d00;
+}
+
+.btn-play-video {
+  width: 150px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1.5px solid transparent;
+  color: black;
+  font-weight: 300px;
+  background-color: gray;
+  position: relative;
+  bottom: 60px; left: 30px;
+}
+
+.btn-play-video:hover {
+  border: 1.5px solid black;
 }
 
 .card-title {
