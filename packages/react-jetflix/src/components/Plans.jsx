@@ -51,7 +51,7 @@ const plans = [
 
 export const Plans = () => {
   return (
-    <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 mt-24">
+    <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 my-16">
       <div className="title mt-4 mb-4">
         <h3 className="text-center text-3xl text-white">Planes</h3>
       </div>
@@ -59,11 +59,11 @@ export const Plans = () => {
         breakpoints={{
           320: {
             slidesPerView: 1,
-            spaceBetween: 20,
+            spaceBetween: 30,
           },
           480: {
             slidesPerView: 1,
-            spaceBetween: 20,
+            spaceBetween: 30,
           },
           568: {
             slidesPerView: 2,
