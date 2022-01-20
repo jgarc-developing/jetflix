@@ -16,14 +16,14 @@ export const Login = () => {
         validate={(values) => {
           const errors = {};
           if (!values.email && !values.password) {
-            errors.email = "Ingresa un email o un número de teléfono válido.";
+            errors.email = "El email es obligatorio";
             errors.password =
               "La contraseña debe tener entre 4 y 60 caracteres.";
           } else if (
             !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email) &&
             (values.password.length >= 4 || values.password.length <= 60)
           ) {
-            errors.email = "Ingresa un email o un número de teléfono válido.";
+            errors.email = "Ingresa un email válido.";
             errors.password =
               "La contraseña debe tener entre 4 y 60 caracteres.";
           }
@@ -56,7 +56,7 @@ export const Login = () => {
               type="email"
               name="email"
               className="w-full rounded-md outline-none p-3 text-white bg-black opacity-75"
-              placeholder="Email o número de teléfono"
+              placeholder="Email"
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.email}
