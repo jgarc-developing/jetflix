@@ -4,7 +4,7 @@ import "../index.css";
 export const Footer = () => {
   return (
     <div>
-      <footer>
+      <footer className="border-t-2 border-gray-400">
         <div className="footer-contain">
           <div className="footer-region">
             <p> &copy; Country/Region: Perú</p>

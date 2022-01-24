@@ -1,6 +1,8 @@
 import React from "react";
 import { Parallax } from "react-parallax";
-import { Formik } from "formik";
+import { useFormik } from "formik";
+import * as yup from "yup";
+import TextField from "@material-ui/core/TextField";
 import { Navigate } from "react-router-dom";
 
 const insideStyles = {
@@ -13,6 +15,29 @@ const insideStyles = {
 };
 
 export const ParallaxHomeRegister = () => {
+  const validationSchema = yup.object({
+    email: yup
+      .string("Ingrese su email")
+      .email("Ingrese un email válido")
+      .required("Email es requerido"),
+  });
+
+  const ToRegister = () => {
+    console.log("Log of Register");
+    return <Navigate to="/register" />;
+  };
+
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+    },
+    validationSchema: validationSchema,
+    onSubmit: (values) => {
+      console.log(values.email);
+      sessionStorage.setItem("email", JSON.stringify(values.email));
+      ToRegister();
+    },
+  });
   return (
     <Parallax
       bgImage={
@@ -28,61 +53,29 @@ export const ParallaxHomeRegister = () => {
             Películas y series <br /> ilimitadas y mucho más.
           </h1>
           <p className="text-xl my-2">
-            Disfruta donde quieras. Cancela cuando quieras.
+            Ingresa tu email para crear una cuenta o reiniciar tu membresía de
+            Jetflix.
           </p>
-          <Formik
-            initialValues={{ email: "" }}
-            validate={(values) => {
-              const errors = {};
-              if (!values.email) {
-                errors.email = "El email es obligatorio";
-              } else if (
-                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-              ) {
-                errors.email = "Ingresa un email válido.";
-              }
-              return errors;
-            }}
-            onSubmit={(values, { setSubmitting }) => {
-              sessionStorage.setItem("email", JSON.stringify(values.email));
-              <Navigate to="/register" />;
-            }}
+          <form
+            className="mt-12"
+            autoComplete="off"
+            onSubmit={formik.handleSubmit}
           >
-            {({
-              values,
-              errors,
-              touched,
-              handleChange,
-              handleBlur,
-              handleSubmit,
-              isSubmitting = true,
-              /* and other goodies */
-            }) => (
-              <>
-                <form onSubmit={handleSubmit} className="mt-12">
-                  <input
-                    type="email"
-                    name="email"
-                    className="text-black  w-7/12 h-10 px-2 outline-none"
-                    placeholder="Email"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.email}
-                  />
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="h-10 bg-red-600 px-4"
-                  >
-                    Comenzar
-                  </button>
-                </form>
-                <p className="mb-5 text-amber-600 text-sm">
-                  {errors.email && touched.email && errors.email}
-                </p>
-              </>
-            )}
-          </Formik>
+            <TextField
+              type="email"
+              className="text-black bg-white  w-7/12 h-12 px-2 outline-none"
+              id="email"
+              name="email"
+              label="Email"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              error={formik.touched.email && Boolean(formik.errors.email)}
+              helperText={formik.touched.email && formik.errors.email}
+            />
+            <button type="submit" className="h-12 bg-red-600 px-4">
+              Comenzar
+            </button>
+          </form>
         </div>
       </div>
     </Parallax>

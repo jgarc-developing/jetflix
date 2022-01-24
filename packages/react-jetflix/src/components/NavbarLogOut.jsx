@@ -41,7 +41,7 @@ export const NavbarLogOut = () => {
                       <></>
                     ) : (
                       <Link to="/login">
-                        <button className="bg-red-600 active:bg-red-600 h-full px-3 py-2 text-slate-200 rounded-md">
+                        <button className="bg-red-600 active:bg-red-600 h-full px-3 mt-2 py-2 text-slate-200 rounded-md">
                           Iniciar Sesión
                         </button>
                       </Link>

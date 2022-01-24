@@ -1,8 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavbarLogOut } from "../components/NavbarLogOut";
-import { Formik } from "formik";
+import { useFormik } from "formik";
+import * as yup from "yup";
+import TextField from '@material-ui/core/TextField';
 
 export const Login = () => {
+
+  const validationSchema = yup.object({
+    email: yup
+      .string('Enter your email')
+      .email('Enter a valid email')
+      .required('Email is required'),
+    password: yup
+      .string('Enter your password')
+      .min(8, 'Password should be of minimum 8 characters length')
+      .required('Password is required'),
+  });
+
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validationSchema: validationSchema,
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
+  document.title="Jetflix | Login"
   return (
     <div className="relative h-screen">
       <NavbarLogOut />
@@ -11,82 +36,33 @@ export const Login = () => {
         className=" absolute top-0 w-screen opacity-50 h-screen"
         alt="bg login"
       />
-      <Formik
-        initialValues={{ email: "", password: "" }}
-        validate={(values) => {
-          const errors = {};
-          if (!values.email && !values.password) {
-            errors.email = "El email es obligatorio";
-            errors.password =
-              "La contraseña debe tener entre 4 y 60 caracteres.";
-          } else if (
-            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email) &&
-            (values.password.length >= 4 || values.password.length <= 60)
-          ) {
-            errors.email = "Ingresa un email válido.";
-            errors.password =
-              "La contraseña debe tener entre 4 y 60 caracteres.";
-          }
-          return errors;
-        }}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
-        }}
+      <form autoComplete="off" onSubmit={formik.handleSubmit} className="absolute text-yellow-50 mt-48 p-8 mx-auto left-0 right-0 login-form"
       >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isSubmitting = true,
-          /* and other goodies */
-        }) => (
-          <form
-            onSubmit={handleSubmit}
-            className="absolute text-yellow-50 mt-48 p-8 mx-auto left-0 right-0"
-            style={{ width: "350px", backgroundColor: "rgba(0,0,0,.75)" }}
-          >
-            <h1 className="mb-4 text-4xl font-medium">Inicia Sesión</h1>
-            <input
-              type="email"
-              name="email"
-              className="w-full rounded-md outline-none p-3 text-white bg-black opacity-75"
-              placeholder="Email"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.email}
-            />
-            <p className="mb-5 pl-3 text-amber-600 text-xs">
-              {errors.email && touched.email && errors.email}
-            </p>
-            <input
-              type="password"
-              name="password"
-              className=" w-full rounded-md outline-none p-3 text-white bg-black opacity-75"
-              placeholder="Contraseña"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.password}
-            />
-            <p className="pl-3 text-amber-600 text-xs">
-              {errors.password && touched.password && errors.password}
-            </p>
-
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className=" w-full bg-red-600 p-3 font-medium rounded-md mt-12"
-            >
-              Iniciar sesión
-            </button>
-          </form>
-        )}
-      </Formik>
+        <TextField
+          fullWidth
+          id="email"
+          name="email"
+          label="Email"
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          error={formik.touched.email && Boolean(formik.errors.email)}
+          helperText={formik.touched.email && formik.errors.email}
+        />
+        <TextField
+          fullWidth
+          id="password"
+          name="password"
+          label="Password"
+          type="password"
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          error={formik.touched.password && Boolean(formik.errors.password)}
+          helperText={formik.touched.password && formik.errors.password}
+        />
+        <button type="submit" className=" w-full bg-red-600 p-3 font-medium rounded-md mt-12">
+          Submit
+        </button>
+      </form>
     </div>
   );
 };

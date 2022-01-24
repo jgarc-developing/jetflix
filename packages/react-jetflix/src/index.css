@@ -72,7 +72,8 @@ code {
 
 .card-container > h2 {
   position: relative;
-  top: 60px; left: 30px;
+  top: 60px;
+  left: 30px;
 }
 
 .title {
@@ -110,7 +111,8 @@ code {
   font-weight: 300px;
   background-color: gray;
   position: relative;
-  bottom: 60px; left: 30px;
+  bottom: 60px;
+  left: 30px;
 }
 
 .btn-play-video:hover {
@@ -156,9 +158,16 @@ code {
   background-position: center;
   background-color: rgba(0, 0, 0, 0.5);
   background-size: 100% 100%;
-  width: 100%;
+  width: 50%;
   height: 500px;
   opacity: 0.6;
+  left: 0;
+  right: 0;
+}
+
+.login-form {
+  max-width: 350px;
+  background-color: rgba(0, 0, 0, 0.75);
 }
 /* FOOTER */
 footer {
