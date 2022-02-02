@@ -63,16 +63,18 @@ export const ParallaxHomeRegister = () => {
           >
             <TextField
               type="email"
-              className="text-black bg-white  w-7/12 h-12 px-2 outline-none"
+              className="text-black bg-white w-7/12 h-11 px-2 rounded outline-none"
               id="email"
               name="email"
               label="Email"
+              variant="outlined"
+              size="small"
               value={formik.values.email}
               onChange={formik.handleChange}
               error={formik.touched.email && Boolean(formik.errors.email)}
               helperText={formik.touched.email && formik.errors.email}
             />
-            <button type="submit" className="h-12 bg-red-600 px-4">
+            <button type="submit" className="h-11 rounded bg-red-600 px-4">
               Comenzar
             </button>
           </form>

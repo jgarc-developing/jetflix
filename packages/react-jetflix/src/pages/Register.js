@@ -5,6 +5,27 @@ import { NavbarLogOut } from "../components/NavbarLogOut";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import TextField from "@material-ui/core/TextField";
+import { styled } from "@material-ui/core/styles";
+
+const BlackTextField = styled(TextField)({
+  '& label.Mui-focused': {
+    color: 'black',
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: 'black',
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: 'red',
+    },
+    '&:hover fieldset': {
+      borderColor: 'yellow',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: 'black',
+    },
+  },
+});
 
 export const Register = () => {
   const [email, setEmail] = useState("");
@@ -65,7 +86,7 @@ export const Register = () => {
             disabled
             value={email}
           />
-          <TextField
+          <BlackTextField
             fullWidth
             id="password"
             name="password"

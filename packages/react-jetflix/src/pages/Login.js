@@ -1,8 +1,40 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { NavbarLogOut } from "../components/NavbarLogOut";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import TextField from '@material-ui/core/TextField';
+import { styled } from "@material-ui/core/styles";
+
+
+const WhiteTextField = styled(TextField)({
+  '& label.Mui-focused': {
+    color: 'white',
+  },
+  '& .MuiInput-underline': {
+    color:'white',
+  },
+  '& .MuiInput-underline:before': {
+    borderBottomColor: 'white',
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: 'white',
+  },
+
+  '& .MuiInputLabel-root': {
+    color: 'white',
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: 'red',
+    },
+    '&:hover fieldset': {
+      borderColor: 'yellow',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: 'white',
+    },
+  },
+});
 
 export const Login = () => {
 
@@ -38,7 +70,7 @@ export const Login = () => {
       />
       <form autoComplete="off" onSubmit={formik.handleSubmit} className="absolute text-yellow-50 mt-48 p-8 mx-auto left-0 right-0 login-form"
       >
-        <TextField
+        <WhiteTextField
           fullWidth
           id="email"
           name="email"
@@ -48,7 +80,7 @@ export const Login = () => {
           error={formik.touched.email && Boolean(formik.errors.email)}
           helperText={formik.touched.email && formik.errors.email}
         />
-        <TextField
+        <WhiteTextField
           fullWidth
           id="password"
           name="password"
