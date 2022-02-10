@@ -3,13 +3,17 @@ import CardPlan from "./CardPlan";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
+// images
+import plan1 from "../assets/img/img-plan1.png";
+import plan2 from "../assets/img/img-plan2.png";
+
 const plans = [
   {
     id: 1,
     title: "Standar Edition",
     description: ["Elden Ring", "Adventure Guide", "Bonus Gesture"],
     price: 69.99,
-    img: "/img-plan1.png",
+    img: plan1,
   },
   {
     id: 2,
@@ -21,7 +25,7 @@ const plans = [
       "Bonus Gesture",
     ],
     price: 89.99,
-    img: "/img-plan2.png",
+    img: plan2,
   },
   {
     id: 3,
@@ -33,7 +37,7 @@ const plans = [
       "Bonus Gesture",
     ],
     price: 89.99,
-    img: "/img-plan1.png",
+    img: plan1,
   },
   {
     id: 4,
@@ -45,7 +49,7 @@ const plans = [
       "Bonus Gesture",
     ],
     price: 89.99,
-    img: "/img-plan2.png",
+    img: plan2,
   },
 ];
 
